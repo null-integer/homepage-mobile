@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" />
+    <title>Homepage</title>
+
+    <!-- Mobile Style -->
+    <style>
+        :root {
+            --bg: #282828;
+            --fg: #ffffff;
+            --secondaryFg: #b3b3b3;
+            --containerBg: #C53B3C;
+            --searchBg: var(--containerBg);
+            --scrollbarColor: #3f3f3f;
+            --fontFamily: 'Roboto Mono', monospace;
+        }
+
+        body {
+            background-color: var(--bg);
+            margin: 0px;
+            text-align: center;
+        }
+        h1{
+            color: #ffffff;
+        }
+        a{
+            text-decoration: none;
+            color: #b3b3b3;
+        }
+        #bookmark-container{
+            background-color: #C53B3C;
+            
+        }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="bookmark-container"></div>
+
+    <script>
+
+        //bookmark array
+        const bookmarks = [
+            {
+                title: "rpi server",
+                links: [
+                    { name: "pulse check", url: "http://192.168.1.163:3001/" },
+                    { name: "recipes", url: "http://192.168.1.163:3001/recipes" },
+                    { name: "bookmarks", url: "http://192.168.1.163:3001/bookmarks" },
+                    { name: "quick access", url: "http://192.168.1.163:3001/quickAccess" },
+                    { name: "directory", url: "http://192.168.1.163:3001/directory" },
+                ],
+            },
+            {
+                title: "my stuff",
+                links: [
+                    { name: "youtube", url: "https://youtube.com" },
+                    { name: "gmail", url: "https://mail.google.com/mail/u/0/#inbox" },
+                    { name: "drive", url: "https://drive.google.com/drive/my-drive" },
+                    { name: "reddit", url: "https://www.reddit.com/",},
+                    { name: "twitch", url: "https://www.twitch.tv/",},
+                    { name: "github", url: "https://github.com/",},
+                    { name: "thingiverse", url: "https://www.thingiverse.com/"},
+                    { name: "ztype", url: "https://zty.pe/"},
+                    { name: "supercook", url: "https://www.supercook.com"},
+                    { name: "monkeytype", url: "https://monkeytype.com/",},
+                    { name: "isDown", url: "https://www.isitdownrightnow.com/",},
+                ],
+            },
+            {
+                title: "school",
+                links: [
+                    { name: "blackboard", url: "https://mycourses.utrgv.edu/" },
+                    { name: "outlook", url: "https://outlook.office365.com/mail/inbox" },
+                    { name: "jira", url: "https://keviny.atlassian.net/jira/projects?selectedProjectType=software"},
+                    { name: "figma", url: "https://www.figma.com/files/"},
+                    { name: "utrgv", url:"https://www.utrgv.edu/en-us/"},
+                    { name: "onedrive", url: "https://utrgv-my.sharepoint.com/personal/alfonso_barrera03_utrgv_edu/"},
+                ],
+            },
+
+        ];
+        let index = 0;
+
+        window.onload = () => {
+            setupBookmarks();
+
+        };
+        
+        //Set up Bookmarks
+        function setupBookmarks(){
+            const bookmarkContainer = document.getElementById("bookmark-container");
+            bookmarkContainer.innerHTML = "";
+            bookmarkContainer.innerHTML += `<h1 onmousedown="cycleBookmark()">${bookmarks[index].title}</h1>`;
+            bookmarks[index].links.map(bookmark =>{
+                bookmarkContainer.innerHTML += `<h2><a href="${bookmark.url}">${bookmark.name}</a></h2>`;
+            });
+        };
+
+        //cycle Bookmark
+        function cycleBookmark(){
+            index = index == bookmarks.length-1 ? 0 : index += 1;
+            setupBookmarks();
+        };
+
+    </script>
+
+  </body>
+</html>
