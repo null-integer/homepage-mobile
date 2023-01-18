@@ -30,7 +30,7 @@ I recommend downloading the file, changing your bookmark data on desktop and the
 
 ## Related
 
-[Homepage Desktop](https://github.com/) - The desktop version of this repo
+[Homepage Desktop](https://github.com/null-integer/homepage) - The desktop version of this repo
 
 ## License
 
